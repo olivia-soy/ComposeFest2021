@@ -32,13 +32,18 @@ class TodoViewModelTest {
 
     @Test
     fun whenRemovingItem_updatesList() {
-        val subject = TodoViewModel()
+        // before
+        val viewModel = TodoViewModel()
         val item1 = generateRandomTodoItem()
         val item2 = generateRandomTodoItem()
-        subject.addItem(item1)
-        subject.addItem(item2)
-        subject.removeItem(item1)
-        assertThat(subject.todoItems).isEqualTo(listOf(item2))
+        viewModel.addItem(item1)
+        viewModel.addItem(item2)
+
+        // during
+        viewModel.removeItem(item1)
+
+        // after
+        assertThat(viewModel.todoItems).isEqualTo(listOf(item2))
     }
 
     @Test
